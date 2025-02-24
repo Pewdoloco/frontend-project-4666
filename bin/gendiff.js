@@ -13,7 +13,7 @@ program
     .action((filepath1, filepath2) => {
         try{
             const diff = genDiff(filepath1, filepath2);
-            console.log(diff);
+            console.log(JSON.stringify(diff, null, 2));
         } catch (error) {
             console.error(error.message);
             process.exit(1);
