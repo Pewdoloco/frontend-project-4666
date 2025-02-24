@@ -1,36 +1,41 @@
-//parser.js
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 
-function parseFile(filePath){
+function parseData(content, ext) {
+    switch (ext) {
+        case '.json':
+            return JSON.parse(content);
+        case '.yaml':
+        case '.yml':
+            return yaml.load(content);
+        default:
+            throw new Error(`Unsupported file format: ${ext}`);
+    }
+}
+
+function handleError(error, filePath) {
+    if (error.code === 'ENOENT') {
+        throw new Error(`File not found: ${filePath}`);
+    }
+    if (error instanceof SyntaxError) {
+        throw new Error(`Invalid JSON in file: ${filePath}`);
+    }
+    if (error.name === 'YAMLException') {
+        throw new Error(`Invalid YAML in file: ${filePath}`);
+    }
+    throw error;
+}
+
+function parseFile(filePath) {
     const absolutePath = path.resolve(process.cwd(), filePath);
     const ext = path.extname(filePath).toLowerCase();
-    try{
-        const fileRead = fs.readFileSync(absolutePath, 'utf-8');
-        let parseData;
-        switch(ext){
-            case '.json':
-                parseData = JSON.parse(fileRead);
-                break;
-            case '.yaml':
-            case '.yml':
-                parseData = yaml.parse(fileRead);
-                break;
-            default:
-                throw new Error(`Unsupported file format: ${ext}`);
-        }
-        return parseData;
+
+    try {
+        const fileContent = fs.readFileSync(absolutePath, 'utf-8');
+        return parseData(fileContent, ext);
     } catch (error) {
-        if(error.code === 'ENOENT') {
-            throw new Error(`File not found: ${filePath}`);
-        } else if (error instanceof SyntaxError){
-            throw new Error(`Invalid JSON in file: ${filePath}`);
-        } else if (error.name === 'YAMLException') {
-            throw new Error(`Invalid YAML in file: ${filePath}`);
-        } else {
-            throw error;
-        }
+        handleError(error, filePath);
     }
 }
 
