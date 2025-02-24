@@ -16,7 +16,7 @@ function parseFile(filePath){
                 break;
             case '.yaml':
             case '.yml':
-                parseData = yaml.parse(parseRead);
+                parseData = yaml.parse(fileRead);
                 break;
             default:
                 throw new Error(`Unsupported file format: ${ext}`);
