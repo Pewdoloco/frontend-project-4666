@@ -2,7 +2,7 @@
 [![Actions Status](https://github.com/Pewdoloco/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Pewdoloco/frontend-project-46/actions)
 
 ### Github Actions status:
-![Status](https://github.com/Pewdoloco/frontend-project-4666/blob/main/.github/workflows/ci.yml/badge.svg)
+[![CI](https://github.com/Pewdoloco/frontend-project-4666/actions/workflows/ci.yml/badge.svg)](https://github.com/Pewdoloco/frontend-project-4666/actions/workflows/ci.yml)
 
 Команда `gendiff` сравнивает два конфигурационных файла и показывает различия между ними.
 
