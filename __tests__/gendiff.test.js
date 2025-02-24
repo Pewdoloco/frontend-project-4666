@@ -1,11 +1,15 @@
 const { genDiff } = require('../src/index');
 
 describe('genDiff', () => {
-  it('should compare file1.json and file2.json', () => {
-    const filepath1 = '__fixtures__/file1.json';
-    const filepath2 = '__fixtures__/file2.json';
+  const testFileComparison = (file1, file2, expectedSnapshot) => {
+    it(`should compare ${file1} and ${file2}`, () => {
+      const filepath1 = `__fixtures__/${file1}`;
+      const filepath2 = `__fixtures__/${file2}`;
+      expect(genDiff(filepath1, filepath2)).toMatchInlineSnapshot(expectedSnapshot);
+    });
+  };
 
-    expect(genDiff(filepath1, filepath2)).toMatchInlineSnapshot(`
+  testFileComparison('file1.json', 'file2.json', `
 "{
   - follow: false
     host: "hexlet.io"
@@ -15,13 +19,8 @@ describe('genDiff', () => {
   + verbose: true
 }"
 `);
-  });
 
-  it('should compare file2.json and file1.json', () => {
-    const filepath1 = '__fixtures__/file2.json';
-    const filepath2 = '__fixtures__/file1.json';
-
-    expect(genDiff(filepath1, filepath2)).toMatchInlineSnapshot(`
+  testFileComparison('file2.json', 'file1.json', `
 "{
     host: "hexlet.io"
   - timeout: 20
@@ -31,6 +30,4 @@ describe('genDiff', () => {
   + proxy: "123.234.53.22"
 }"
 `);
-  });
-  
 });
