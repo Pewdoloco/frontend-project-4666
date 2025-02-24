@@ -1,5 +1,6 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
+import pluginJest from "eslint-plugin-jest";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -13,6 +14,12 @@ export default [
       "__fixtures__/",
       "*.log",
     ],
+    plugins: ["jest"],
+    env: {
+      node: true,
+      "jest/globals": true,
+    },
+    extends: ["airbnb-base", "plugin:jest/recommended"],
   },
   {
     languageOptions: {

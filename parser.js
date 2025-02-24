@@ -9,7 +9,6 @@ function parseFile(filePath){
     try{
         const fileRead = fs.readFileSync(absolutePath, 'utf-8');
         let parseData;
-
         switch(ext){
             case '.json':
                 parseData = JSON.parse(fileRead);
