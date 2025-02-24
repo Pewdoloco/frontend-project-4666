@@ -1,30 +1,37 @@
 import globals from "globals";
-import pluginJs from "@eslint/js";
-import pluginJest from "eslint-plugin-jest";
+import js from "@eslint/js";
+import jest from "eslint-plugin-jest";
 
-/** @type {import('eslint').Linter.Config[]} */
 export default [
   {
     files: ["**/*.js"],
-    languageOptions: {
-      sourceType: "commonjs",
-    },
     ignores: [
       "node_modules/",
       "__fixtures__/",
       "*.log",
     ],
-    plugins: ["jest"],
-    env: {
-      node: true,
-      "jest/globals": true,
-    },
-    extends: ["airbnb-base", "plugin:jest/recommended"],
-  },
-  {
     languageOptions: {
-      globals: globals.node,
+      sourceType: "commonjs",
+      globals: {
+        ...globals.node,
+        ...globals.es2021,
+        ...{
+          describe: "readonly",
+          it: "readonly",
+          expect: "readonly",
+        },
+      },
+    },
+    plugins: {
+      jest: jest,
+    },
+    rules: {
+      "jest/no-disabled-tests": "warn",
+      "jest/no-focused-tests": "error",
+      "jest/no-identical-title": "error",
+      "jest/prefer-to-have-length": "warn",
+      "jest/valid-expect": "error",
     },
   },
-  pluginJs.configs.recommended,
+  js.configs.recommended,
 ];
