@@ -12,4 +12,12 @@
 
 Команда `gendiff` сравнивает два конфигурационных файла и показывает различия между ними.
 
+.json
 [![asciicast](https://asciinema.org/a/GOXB6D44Dk1PmfFQmhQtLSKty.svg)](https://asciinema.org/a/GOXB6D44Dk1PmfFQmhQtLSKty)
+
+.yaml
+[![asciicast](https://asciinema.org/a/QXY1jYZkfHjyIyyRjLmNmNPuj.svg)](https://asciinema.org/a/QXY1jYZkfHjyIyyRjLmNmNPuj)
+
+Команда 'npm test'
+
+[![asciicast](https://asciinema.org/a/ELqRuiYyI6NrQdSE91ndaDC85.svg)](https://asciinema.org/a/ELqRuiYyI6NrQdSE91ndaDC85)

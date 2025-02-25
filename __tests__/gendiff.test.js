@@ -1,15 +1,25 @@
+const fs = require('fs');
 const { genDiff } = require('../src/index');
 
 describe('genDiff', () => {
+  const extensions = ['json', 'yml', 'yaml'];
+
   const testFileComparison = (file1, file2, expectedSnapshot) => {
-    it(`should compare ${file1} and ${file2}`, () => {
-      const filepath1 = `__fixtures__/${file1}`;
-      const filepath2 = `__fixtures__/${file2}`;
-      expect(genDiff(filepath1, filepath2)).toMatchInlineSnapshot(expectedSnapshot);
+    extensions.forEach((ext) => {
+      const filepath1 = `__fixtures__/${file1}.${ext}`;
+      const filepath2 = `__fixtures__/${file2}.${ext}`;
+
+      if (!fs.existsSync(filepath1) || !fs.existsSync(filepath2)) {
+        return;
+      }
+
+      it(`should compare ${file1}.${ext} and ${file2}.${ext}`, () => {
+        expect(genDiff(filepath1, filepath2)).toMatchInlineSnapshot(expectedSnapshot);
+      });
     });
   };
 
-  testFileComparison('file1.json', 'file2.json', `
+  testFileComparison('file1', 'file2', `
 "{
   - follow: false
     host: "hexlet.io"
@@ -20,7 +30,7 @@ describe('genDiff', () => {
 }"
 `);
 
-  testFileComparison('file2.json', 'file1.json', `
+  testFileComparison('file2', 'file1', `
 "{
     host: "hexlet.io"
   - timeout: 20
