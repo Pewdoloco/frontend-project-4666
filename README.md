@@ -21,3 +21,7 @@
 Команда 'npm test'
 
 [![asciicast](https://asciinema.org/a/ELqRuiYyI6NrQdSE91ndaDC85.svg)](https://asciinema.org/a/ELqRuiYyI6NrQdSE91ndaDC85)
+
+Рекурсивное сравнение
+
+[![asciicast](https://asciinema.org/a/tKuP6S8OE0ml80kOr4iZYQWor.svg)](https://asciinema.org/a/tKuP6S8OE0ml80kOr4iZYQWor)
