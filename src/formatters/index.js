@@ -1,5 +1,6 @@
 const { stylish } = require('./stylish');
 const { plain } = require('./plain');
+const { json } = require('./json');
 
 const getFormatter = (format) => {
   switch (format) {
@@ -7,6 +8,8 @@ const getFormatter = (format) => {
       return stylish;
     case 'plain':
       return plain;
+    case 'json':
+      return json;
     default:
       throw new Error(`Unsupported format: ${format}`);
   }
