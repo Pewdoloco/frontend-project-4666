@@ -1,15 +1,15 @@
 import yaml from 'js-yaml';
 
 const parseFile = (content, format) => {
-  switch (format.toLowerCase()) {
+    switch (format.toLowerCase()) {
     case 'json':
-      return JSON.parse(content);
+        return JSON.parse(content);
     case 'yaml':
     case 'yml':
-      return yaml.load(content);
+        return yaml.load(content);
     default:
-      throw new Error(`Unsupported file format: ${format}`);
-  }
+        throw new Error(`Unsupported file format: ${format}`);
+    }
 };
 
 export default parseFile;

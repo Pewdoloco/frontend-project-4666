@@ -30,7 +30,11 @@ export default [
       "jest/no-identical-title": "error",
       "jest/prefer-to-have-length": "warn",
       "jest/valid-expect": "error",
-      "eol-last": ["error", "always"],
+      "indent": ["error", 4],
+      "no-trailing-spaces": "error",
+      "comma-dangle": ["error", "always-multiline"],
+      "object-curly-newline": ["error", { "multiline": true, "consistent": true }],
+      "no-else-return": "error"
     },
   },
   js.configs.recommended,

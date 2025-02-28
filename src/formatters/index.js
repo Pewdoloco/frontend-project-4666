@@ -3,16 +3,16 @@ import plain from './plain.js';
 import json from './json.js';
 
 const getFormatter = (format) => {
-  switch (format) {
+    switch (format) {
     case 'stylish':
-      return stylish;
+        return stylish;
     case 'plain':
-      return plain;
+        return plain;
     case 'json':
-      return json;
+        return json;
     default:
-      throw new Error(`Unsupported format: ${format}`);
-  }
+        throw new Error(`Unsupported format: ${format}`);
+    }
 };
 
 export default getFormatter;
