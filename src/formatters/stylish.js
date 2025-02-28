@@ -25,7 +25,7 @@ const stylish = (diffTree) => {
         case 'unchanged':
           return `${indent}    ${node.key}: ${formatValue(node.value, depth + 1)}`;
         case 'nested':
-          return `${indent}    ${node.key}: {\n${iter(node.children, depth + 1)}\n${indent}    }`;
+          return `${indent}  ${node.key}: {\n${iter(node.children, depth + 1)}\n${indent}  }`;
         default:
           throw new Error(`Unknown node type: ${node.type}`);
       }
