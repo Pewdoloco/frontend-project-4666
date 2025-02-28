@@ -7,7 +7,7 @@ const formatValue = (value, depth) => {
   if (!_.isObject(value) || value === null) return String(value);
   const indent = ' '.repeat(depth * INDENT_SIZE);
   const entries = Object.entries(value).map(
-    ([key, val]) => `${indent}    ${key}: ${formatValue(val, depth + 1)}`
+    ([key, val]) => `${indent}    ${key}: ${formatValue(val, depth + 1)}`,
   );
   return `{
 ${entries.join('\n')}
@@ -44,4 +44,3 @@ ${iter(diffTree, 0)}
 };
 
 export default stylish;
-

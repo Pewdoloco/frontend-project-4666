@@ -30,6 +30,7 @@ export default [
       "jest/no-identical-title": "error",
       "jest/prefer-to-have-length": "warn",
       "jest/valid-expect": "error",
+      "eol-last": ["error", "always"],
     },
   },
   js.configs.recommended,

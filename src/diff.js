@@ -27,5 +27,4 @@ const buildDiffTree = (obj1, obj2) => {
   });
 };
 
-
 export { buildDiffTree };

@@ -34,4 +34,3 @@ const plain = (diffTree) => {
 };
 
 export default plain;
-
