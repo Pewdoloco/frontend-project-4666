@@ -44,3 +44,4 @@ ${iter(diffTree, 0)}
 };
 
 export default stylish;
+

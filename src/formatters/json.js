@@ -1,5 +1,3 @@
-const json = (diffTree) => {
-    return JSON.stringify(diffTree, null, 2);
-  };
-  
-  export default json;
+const json = (diffTree) => JSON.stringify(diffTree, null, 2);
+
+export default json;

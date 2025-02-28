@@ -1,12 +1,8 @@
 import _ from 'lodash';
 
 const formatValue = (value) => {
-  if (_.isObject(value) && value !== null) {
-    return '[complex value]';
-  }
-  if (typeof value === 'string') {
-    return `'${value}'`;
-  }
+  if (_.isObject(value) && value !== null) return '[complex value]';
+  if (typeof value === 'string') return `'${value}'`;
   return String(value);
 };
 
@@ -38,3 +34,4 @@ const plain = (diffTree) => {
 };
 
 export default plain;
+
