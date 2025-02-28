@@ -1,4 +1,5 @@
 import _ from 'lodash';
+
 const INDENT_SIZE = 4;
 
 const getIndent = (depth, spaces = INDENT_SIZE) => ' '.repeat(depth * spaces - 2);
@@ -15,8 +16,7 @@ ${indent}}`;
 };
 
 const stylish = (diffTree) => {
-  const iter = (nodes, depth) => {
-    return nodes.map((node) => {
+  const iter = (nodes, depth) => nodes.map((node) => {
       const indent = getIndent(depth + 1);
       
       switch (node.type) {
@@ -36,7 +36,6 @@ ${indent}  }`;
           throw new Error(`Unknown node type: ${node.type}`);
       }
     }).join('\n');
-  };
   
   return `{
 ${iter(diffTree, 0)}

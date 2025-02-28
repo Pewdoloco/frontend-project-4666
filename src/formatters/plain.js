@@ -1,14 +1,15 @@
 import _ from 'lodash';
 
-const formatValue = (value) => {
-  if (_.isObject(value) && value !== null) return '[complex value]';
-  if (typeof value === 'string') return `'${value}'`;
-  return String(value);
-};
+const formatValue = (value) => (
+  _.isObject(value) && value !== null
+    ? '[complex value]'
+    : typeof value === 'string'
+      ? `'${value}'`
+      : String(value)
+);
 
 const plain = (diffTree) => {
-  const iter = (nodes, path = '') => {
-    return nodes
+  const iter = (nodes, path = '') => nodes
       .filter((node) => node.type !== 'unchanged')
       .map((node) => {
         const propertyPath = path ? `${path}.${node.key}` : node.key;
@@ -28,7 +29,6 @@ const plain = (diffTree) => {
       })
       .flat()
       .join('\n');
-  };
   
   return iter(diffTree);
 };

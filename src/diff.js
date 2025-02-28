@@ -7,10 +7,16 @@ const buildDiffTree = (obj1, obj2) => {
     const value2 = obj2[key];
 
     if (!_.has(obj1, key)) {
-      return { type: 'added', key, value: value2 };
+      return {
+        type: 'added',
+        key, 
+        value: value2 };
     }
     if (!_.has(obj2, key)) {
-      return { type: 'removed', key, value: value1 };
+      return { 
+        type: 'removed', 
+        key, 
+        value: value1 };
     }
 
     if (_.isObject(value1) && _.isObject(value2)) {
@@ -27,4 +33,4 @@ const buildDiffTree = (obj1, obj2) => {
   });
 };
 
-export { buildDiffTree };
+export default buildDiffTree;

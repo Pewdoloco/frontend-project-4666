@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import parseData from './parser.js';
-import { buildDiffTree } from './diff.js';
+import buildDiffTree from './diff.js';
 import getFormatter from './formatters/index.js';
 
 const genDiff = (filepath1, filepath2, format = 'stylish') => {
@@ -15,7 +15,7 @@ const genDiff = (filepath1, filepath2, format = 'stylish') => {
   const file2 = parseData(fs.readFileSync(absolutePath2, 'utf-8'), format2);
 
   const diffTree = buildDiffTree(file1, file2);
-  const formatter = getFormatter(format);  
+  const formatter = getFormatter(format);
   return formatter(diffTree);
 };
 
