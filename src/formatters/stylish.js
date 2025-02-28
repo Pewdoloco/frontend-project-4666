@@ -19,20 +19,20 @@ const stylish = (diffTree) => {
   const iter = (nodes, depth) => nodes.map((node) => {
     const indent = getIndent(depth + 1);
     switch (node.type) {
-    case 'added':
-      return `${indent}+ ${node.key}: ${formatValue(node.value, depth + 1)}`;
-    case 'removed':
-      return `${indent}- ${node.key}: ${formatValue(node.value, depth + 1)}`;
-    case 'changed':
-      return `${indent}- ${node.key}: ${formatValue(node.oldValue, depth + 1)}\n${indent}+ ${node.key}: ${formatValue(node.newValue, depth + 1)}`;
-    case 'unchanged':
-      return `${indent}  ${node.key}: ${formatValue(node.value, depth + 1)}`;
-    case 'nested':
-      return `${indent}  ${node.key}: {
+      case 'added':
+        return `${indent}+ ${node.key}: ${formatValue(node.value, depth + 1)}`;
+      case 'removed':
+        return `${indent}- ${node.key}: ${formatValue(node.value, depth + 1)}`;
+      case 'changed':
+        return `${indent}- ${node.key}: ${formatValue(node.oldValue, depth + 1)}\n${indent}+ ${node.key}: ${formatValue(node.newValue, depth + 1)}`;
+      case 'unchanged':
+        return `${indent}  ${node.key}: ${formatValue(node.value, depth + 1)}`;
+      case 'nested':
+        return `${indent}  ${node.key}: {
 ${iter(node.children, depth + 1)}
 ${indent}  }`;
-    default:
-      throw new Error(`Unknown node type: ${node.type}`);
+      default:
+        throw new Error(`Unknown node type: ${node.type}`);
     }
   }).join('\n');
   return `{

@@ -4,14 +4,14 @@ import json from './json.js';
 
 const getFormatter = (format) => {
   switch (format) {
-  case 'stylish':
-    return stylish;
-  case 'plain':
-    return plain;
-  case 'json':
-    return json;
-  default:
-    throw new Error(`Unsupported format: ${format}`);
+    case 'stylish':
+      return stylish;
+    case 'plain':
+      return plain;
+    case 'json':
+      return json;
+    default:
+      throw new Error(`Unsupported format: ${format}`);
   }
 };
 
