@@ -17,13 +17,13 @@ const stylish = (diffTree) => {
       
       switch (node.type) {
         case 'added':
-          return `${indent}  + ${node.key}: ${formatValue(node.value, depth + 1)}`;
+          return `${indent}+ ${node.key}: ${formatValue(node.value, depth + 1)}`;
         case 'removed':
-          return `${indent}  - ${node.key}: ${formatValue(node.value, depth + 1)}`;
+          return `${indent}- ${node.key}: ${formatValue(node.value, depth + 1)}`;
         case 'changed':
-          return `${indent}  - ${node.key}: ${formatValue(node.oldValue, depth + 1)}\n${indent}  + ${node.key}: ${formatValue(node.newValue, depth + 1)}`;
+          return `${indent}- ${node.key}: ${formatValue(node.oldValue, depth + 1)}\n${indent}+ ${node.key}: ${formatValue(node.newValue, depth + 1)}`;
         case 'unchanged':
-          return `${indent}    ${node.key}: ${formatValue(node.value, depth + 1)}`;
+          return `${indent}  ${node.key}: ${formatValue(node.value, depth + 1)}`;
         case 'nested':
           return `${indent}  ${node.key}: {\n${iter(node.children, depth + 1)}\n${indent}  }`;
         default:
