@@ -1,19 +1,23 @@
 import _ from 'lodash';
 const INDENT_SIZE = 4;
 
+const getIndent = (depth, spaces = INDENT_SIZE) => ' '.repeat(depth * spaces - 2);
+
 const formatValue = (value, depth) => {
-  if (!_.isObject(value)) return String(value);
+  if (!_.isObject(value) || value === null) return String(value);
   const indent = ' '.repeat(depth * INDENT_SIZE);
   const entries = Object.entries(value).map(
     ([key, val]) => `${indent}    ${key}: ${formatValue(val, depth + 1)}`
   );
-  return `{\n${entries.join('\n')}\n${indent}}`;
+  return `{
+${entries.join('\n')}
+${indent}}`;
 };
 
 const stylish = (diffTree) => {
   const iter = (nodes, depth) => {
     return nodes.map((node) => {
-      const indent = ' '.repeat(depth * INDENT_SIZE);
+      const indent = getIndent(depth + 1);
       
       switch (node.type) {
         case 'added':
@@ -25,14 +29,18 @@ const stylish = (diffTree) => {
         case 'unchanged':
           return `${indent}  ${node.key}: ${formatValue(node.value, depth + 1)}`;
         case 'nested':
-          return `${indent}  ${node.key}: {\n${iter(node.children, depth + 1)}\n${indent}  }`;
+          return `${indent}  ${node.key}: {
+${iter(node.children, depth + 1)}
+${indent}  }`;
         default:
           throw new Error(`Unknown node type: ${node.type}`);
       }
     }).join('\n');
   };
   
-  return `{\n${iter(diffTree, 0)}\n}`;
+  return `{
+${iter(diffTree, 0)}
+}`;
 };
 
 export default stylish;
