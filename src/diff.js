@@ -1,5 +1,4 @@
-// src/diff.js
-const _ = require('lodash');
+import _ from 'lodash';
 
 const buildDiffTree = (obj1, obj2) => {
   const keys = _.sortBy(_.union(_.keys(obj1), _.keys(obj2)));
@@ -29,4 +28,4 @@ const buildDiffTree = (obj1, obj2) => {
 };
 
 
-module.exports = { buildDiffTree };
+export { buildDiffTree };

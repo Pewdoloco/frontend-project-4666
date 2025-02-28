@@ -1,6 +1,6 @@
-const { stylish } = require('./stylish');
-const { plain } = require('./plain');
-const { json } = require('./json');
+import stylish from './stylish.js';
+import plain from './plain.js';
+import json from './json.js';
 
 const getFormatter = (format) => {
   switch (format) {
@@ -15,4 +15,4 @@ const getFormatter = (format) => {
   }
 };
 
-module.exports = { getFormatter };
+export default getFormatter;

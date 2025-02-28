@@ -1,13 +1,11 @@
-// src/formatters/stylish.js
-
-const _ = require('lodash');
+import _ from 'lodash';
 const INDENT_SIZE = 4;
 
 const formatValue = (value, depth) => {
   if (!_.isObject(value)) return String(value);
   const indent = ' '.repeat(depth * INDENT_SIZE);
   const entries = Object.entries(value).map(
-    ([k, v]) => `${indent}    ${k}: ${formatValue(v, depth + 1)}`
+    ([key, value]) => `${indent}    ${key}: ${formatValue(value, depth + 1)}`
   );
   return `{\n${entries.join('\n')}\n${indent}}`;
 };
@@ -15,16 +13,16 @@ const formatValue = (value, depth) => {
 const stylish = (diffTree) => {
   const iter = (nodes, depth) => {
     return nodes.map((node) => {
-      const changeIndent = ' '.repeat((depth - 1) * INDENT_SIZE + 2);
+      const getIndent = (depth, spaces = INDENT_SIZE) => ' '.repeat(depth * spaces);
       const nodeIndent = ' '.repeat(depth * INDENT_SIZE);
       
       switch (node.type) {
         case 'added':
-          return `${changeIndent}+ ${node.key}: ${formatValue(node.value, depth + 1)}`;
+          return `${getIndent(depth, 2)}+ ${node.key}: ${formatValue(node.value, depth + 1)}`;
         case 'removed':
-          return `${changeIndent}- ${node.key}: ${formatValue(node.value, depth + 1)}`;
+          return `${getIndent(depth, 2)}- ${node.key}: ${formatValue(node.value, depth + 1)}`;
         case 'changed':
-          return `${changeIndent}- ${node.key}: ${formatValue(node.oldValue, depth + 1)}\n${changeIndent}+ ${node.key}: ${formatValue(node.newValue, depth + 1)}`;
+          return `${getIndent(depth, 2)}- ${node.key}: ${formatValue(node.oldValue, depth + 1)}\n${getIndent(depth, 2)}+ ${node.key}: ${formatValue(node.newValue, depth + 1)}`;
         case 'unchanged':
           return `${nodeIndent}  ${node.key}: ${formatValue(node.value, depth + 1)}`;
         case 'nested':
@@ -38,4 +36,4 @@ const stylish = (diffTree) => {
   return `{\n${iter(diffTree, 1)}\n}`;
 };
 
-module.exports = { stylish };
+export default stylish;

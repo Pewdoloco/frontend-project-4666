@@ -1,4 +1,4 @@
-const _ = require('lodash');
+import _ from 'lodash';
 
 const formatValue = (value) => {
   if (_.isObject(value) && value !== null) {
@@ -37,4 +37,4 @@ const plain = (diffTree) => {
   return iter(diffTree);
 };
 
-module.exports = { plain };
+export default plain;

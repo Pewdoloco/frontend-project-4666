@@ -11,16 +11,14 @@ export default [
       "*.log",
     ],
     languageOptions: {
-      sourceType: "commonjs",
+      sourceType: "module",
       globals: {
         ...globals.node,
         ...globals.es2021,
-        ...{
-          describe: "readonly",
-          it: "readonly",
-          expect: "readonly",
-          test: "readonly"
-        },
+        describe: "readonly",
+        it: "readonly",
+        expect: "readonly",
+        test: "readonly",
       },
     },
     plugins: {

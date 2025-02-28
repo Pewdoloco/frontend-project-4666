@@ -3,32 +3,32 @@
 exports[`genDiff should compare file1.json and file2.json 1`] = `
 "{
       common: {
-      + follow: false
+    + follow: false
           setting1: Value 1
-      - setting2: 200
-      - setting3: true
-      + setting3: null
-      + setting4: blah blah
-      + setting5: {
+    - setting2: 200
+    - setting3: true
+    + setting3: null
+    + setting4: blah blah
+    + setting5: {
                 key5: value5
             }
           setting6: {
               doge: {
-              - wow: 
-              + wow: so much
+        - wow: 
+        + wow: so much
               }
               key: value
-          + ops: vops
+      + ops: vops
           }
       }
       group1: {
-      - baz: bas
-      + baz: bars
+    - baz: bas
+    + baz: bars
           foo: bar
-      - nest: {
+    - nest: {
                 key: value
             }
-      + nest: str
+    + nest: str
       }
   - group2: {
             abc: 12345
@@ -50,32 +50,32 @@ exports[`genDiff should compare file1.json and file2.json 1`] = `
 exports[`genDiff should compare file1.yaml and file2.yaml 1`] = `
 "{
       common: {
-      + follow: false
+    + follow: false
           setting1: Value 1
-      - setting2: 200
-      - setting3: true
-      + setting3: null
-      + setting4: blah blah
-      + setting5: {
+    - setting2: 200
+    - setting3: true
+    + setting3: null
+    + setting4: blah blah
+    + setting5: {
                 key5: value5
             }
           setting6: {
               doge: {
-              - wow: 
-              + wow: so much
+        - wow: 
+        + wow: so much
               }
               key: value
-          + ops: vops
+      + ops: vops
           }
       }
       group1: {
-      - baz: bas
-      + baz: bars
+    - baz: bas
+    + baz: bars
           foo: bar
-      - nest: {
+    - nest: {
                 key: value
             }
-      + nest: str
+    + nest: str
       }
   - group2: {
             abc: 12345
@@ -97,30 +97,30 @@ exports[`genDiff should compare file1.yaml and file2.yaml 1`] = `
 exports[`genDiff should compare file2.json and file1.json 1`] = `
 "{
       common: {
-      - follow: false
+    - follow: false
           setting1: Value 1
-      + setting2: 200
-      - setting3: null
-      + setting3: true
-      - setting4: blah blah
-      - setting5: {
+    + setting2: 200
+    - setting3: null
+    + setting3: true
+    - setting4: blah blah
+    - setting5: {
                 key5: value5
             }
           setting6: {
               doge: {
-              - wow: so much
-              + wow: 
+        - wow: so much
+        + wow: 
               }
               key: value
-          - ops: vops
+      - ops: vops
           }
       }
       group1: {
-      - baz: bars
-      + baz: bas
+    - baz: bars
+    + baz: bas
           foo: bar
-      - nest: str
-      + nest: {
+    - nest: str
+    + nest: {
                 key: value
             }
       }
@@ -144,30 +144,30 @@ exports[`genDiff should compare file2.json and file1.json 1`] = `
 exports[`genDiff should compare file2.yaml and file1.yaml 1`] = `
 "{
       common: {
-      - follow: false
+    - follow: false
           setting1: Value 1
-      + setting2: 200
-      - setting3: null
-      + setting3: true
-      - setting4: blah blah
-      - setting5: {
+    + setting2: 200
+    - setting3: null
+    + setting3: true
+    - setting4: blah blah
+    - setting5: {
                 key5: value5
             }
           setting6: {
               doge: {
-              - wow: so much
-              + wow: 
+        - wow: so much
+        + wow: 
               }
               key: value
-          - ops: vops
+      - ops: vops
           }
       }
       group1: {
-      - baz: bars
-      + baz: bas
+    - baz: bars
+    + baz: bas
           foo: bar
-      - nest: str
-      + nest: {
+    - nest: str
+    + nest: {
                 key: value
             }
       }
